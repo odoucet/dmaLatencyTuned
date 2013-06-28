@@ -24,6 +24,8 @@ $oldValues = array(
     'idle' => 0,
 );
 
+$currentLatency = -1;
+
 // old that file descriptor 
 $fp = fopen('/dev/cpu_dma_latency', 'w');
 
@@ -64,8 +66,12 @@ while (true) {
             break;
     }   
     
-    fwrite($fp, pack('i', $latencyNeeded));
-    rewind($fp);
+    if ($currentLatency != $latencyNeeded) {
+        fwrite($fp, pack('i', $latencyNeeded));
+        rewind($fp);
+        syslog(LOG_NOTICE, 'DMALatency changed from '.$currentLatency.' to '.$latencyNeeded.'');
+        $currentLatency = $latencyNeeded;
+    }
     
     $oldValues = $newValues;
     sleep(LOOPTIME);
