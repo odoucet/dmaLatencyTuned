@@ -28,6 +28,7 @@ $currentLatency = -1;
 
 // old that file descriptor 
 $fp = fopen('/dev/cpu_dma_latency', 'w');
+openlog('dmalatency', LOG_ODELAY, LOG_DAEMON);
 
 while (true) {
     // Get new values
@@ -76,4 +77,5 @@ while (true) {
     $oldValues = $newValues;
     sleep(LOOPTIME);
 }
+closelog();
 fclose($fp);
