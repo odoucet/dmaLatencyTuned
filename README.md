@@ -11,6 +11,11 @@ By experience, default timings are too aggressive in current kernel, and CPU goe
 a less responsive server. I personnally found a 40% difference performance on some benchmarks !
 I wrote this tool after exposing my problem on kernel mailing list here : http://comments.gmane.org/gmane.linux.kernel/1425277
 
+Performance comparison
+----------------------
+See for yourself : 
+![Benchmark](http://tof.canardpc.com/view/b8d2e869-f92b-46c8-969b-b3c97262d7e5.jpg)
+
 How it works
 ------------
 This tool monitors /proc/stat and write to this file to get the most effective value : 
