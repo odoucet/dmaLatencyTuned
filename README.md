@@ -28,3 +28,7 @@ To see C-States / dma_latency value relationship :
 cat /sys/devices/system/cpu/cpu0/cpuidle/state*/{name,latency}
 ```
 
+Future
+------
+- Rewrite this tool in pure C
+- Tune values
