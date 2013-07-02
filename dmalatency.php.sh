@@ -13,10 +13,10 @@ define('LOOPTIME', 10);
 
 // if CPU > X, then disable all C-States
 $latencyValues = array(
-    // CPU => value   (please order by CPU DESC)
-    50     => 0,  // disable all (full speed)
-    10     => 11, // C1E state
-    3      => 201,// C6  state
+    //CPU% => value   (please order by CPU DESC)
+    40     => 0,     // disable all (full speed)
+    15     => 11,    // C1E state
+    5      => 201,   // C6  state
 );
 
 $oldValues = array(
@@ -70,7 +70,7 @@ while (true) {
     if ($currentLatency != $latencyNeeded) {
         fwrite($fp, pack('i', $latencyNeeded));
         rewind($fp);
-        syslog(LOG_NOTICE, 'DMALatency changed from '.$currentLatency.' to '.$latencyNeeded.'');
+        syslog(LOG_NOTICE, 'DMA Latency changed from '.$currentLatency.' to '.$latencyNeeded.'');
         $currentLatency = $latencyNeeded;
     }
     
